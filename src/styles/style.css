@@ -660,6 +660,96 @@ header {
 
 
 /* =============================================
+   BLOG
+   ============================================= */
+
+.grid-articoli {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--spazio-lg);
+}
+
+.card-articolo {
+  background-color: var(--colore-crema);
+  border-radius: var(--raggio-lg);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-articolo:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.card-articolo__corpo {
+  padding: var(--spazio-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spazio-sm);
+}
+
+.card-articolo__data {
+  font-size: var(--testo-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--colore-terra);
+}
+
+.card-articolo__titolo {
+  font-size: var(--testo-xl);
+  color: var(--colore-vino);
+  line-height: 1.3;
+}
+
+.card-articolo__titolo a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.card-articolo__titolo a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--colore-vino);
+}
+
+.card-articolo__descrizione {
+  font-size: var(--testo-sm);
+  color: var(--colore-testo-chiaro);
+  line-height: 1.6;
+  flex: 1;
+}
+
+.card-articolo__leggi {
+  font-size: var(--testo-sm);
+  font-weight: 600;
+  color: var(--colore-vino);
+  text-decoration: none;
+  margin-top: var(--spazio-xs);
+}
+
+.card-articolo__leggi:hover {
+  text-decoration: underline;
+}
+
+.articolo-corpo {
+  max-width: 680px;
+  line-height: 1.8;
+  color: var(--colore-testo);
+}
+
+.articolo-corpo h2 {
+  font-size: var(--testo-xl);
+  color: var(--colore-vino);
+  margin-top: var(--spazio-xl);
+  margin-bottom: var(--spazio-sm);
+}
+
+.articolo-corpo p {
+  margin-bottom: var(--spazio-md);
+}
+
+
+/* =============================================
    FOOTER
    ============================================= */
 

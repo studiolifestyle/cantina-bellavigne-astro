@@ -1,0 +1,44 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const articoli = await getCollection('blog');
+articoli.sort((a, b) => b.data.data - a.data.data);
+---
+
+<Layout
+  title="Blog — Cantina Bellavigne"
+  description="Storie di vendemmia, approfondimenti sul biologico e consigli di abbinamento dalla cantina sul Lago di Garda."
+>
+
+  <section class="pagina-intestazione">
+    <div class="contenitore">
+      <h1 class="pagina-intestazione__titolo">Dal blog</h1>
+      <p class="pagina-intestazione__sottotitolo">
+        Storie di vigna, stagioni, vino e territorio.
+      </p>
+    </div>
+  </section>
+
+  <section class="sezione">
+    <div class="contenitore">
+      <div class="grid-articoli">
+        {articoli.map(articolo => (
+          <article class="card-articolo">
+            <div class="card-articolo__corpo">
+              <p class="card-articolo__data">
+                {articolo.data.data.toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' })}
+              </p>
+              <h2 class="card-articolo__titolo">
+                <a href={`/blog/${articolo.id}`}>{articolo.data.titolo}</a>
+              </h2>
+              <p class="card-articolo__descrizione">{articolo.data.descrizione}</p>
+              <a href={`/blog/${articolo.id}`} class="card-articolo__leggi">Leggi l'articolo →</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</Layout>

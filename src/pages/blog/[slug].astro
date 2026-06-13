@@ -1,0 +1,39 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const articoli = await getCollection('blog');
+  return articoli.map(articolo => ({
+    params: { slug: articolo.id },
+    props: { articolo },
+  }));
+}
+
+const { articolo } = Astro.props;
+const { Content } = await render(articolo);
+---
+
+<Layout title={`${articolo.data.titolo} — Cantina Bellavigne`} description={articolo.data.descrizione}>
+
+  <section class="pagina-intestazione">
+    <div class="contenitore">
+      <p class="pagina-intestazione__sottotitolo" style="opacity: 0.7; font-size: var(--testo-sm); margin-bottom: var(--spazio-sm);">
+        {articolo.data.data.toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' })}
+      </p>
+      <h1 class="pagina-intestazione__titolo">{articolo.data.titolo}</h1>
+    </div>
+  </section>
+
+  <section class="sezione">
+    <div class="contenitore">
+      <div class="articolo-corpo">
+        <Content />
+      </div>
+      <p style="margin-top: var(--spazio-xl);">
+        <a href="/blog" class="btn btn--outline">← Torna al blog</a>
+      </p>
+    </div>
+  </section>
+
+</Layout>

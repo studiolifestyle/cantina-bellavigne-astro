@@ -15,4 +15,14 @@ const vini = defineCollection({
   }),
 });
 
-export const collections = { vini };
+const blog = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/blog' }),
+  schema: z.object({
+    titolo: z.string(),
+    data: z.coerce.date(),
+    descrizione: z.string(),
+    immagine: z.string().optional(),
+  }),
+});
+
+export const collections = { vini, blog };

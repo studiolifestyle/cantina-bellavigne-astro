@@ -36,5 +36,5 @@ pnpm build      # genera il sito in ./dist/
 - [x] Fase 1 — HTML semantico (`demo-cantina/`)
 - [x] Fase 2 — CSS (`demo-cantina/`)
 - [x] Fase 3 — Astro + Cloudflare (questo progetto)
-- [ ] Fase 4 — JavaScript
-- [ ] Fase 5 — Blog con routing dinamico
+- [x] Fase 4 — JavaScript
+- [x] Fase 5 — Blog con routing dinamico

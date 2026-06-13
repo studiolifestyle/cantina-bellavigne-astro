@@ -27,6 +27,7 @@ const path = Astro.url.pathname.replace(/\/$/, '') || '/';
           <ul class="nav__lista" role="list">
             <li><a href="/vini" class={`nav__link${path === '/vini' ? ' nav__link--attivo' : ''}`} aria-current={path === '/vini' ? 'page' : undefined}>I nostri vini</a></li>
             <li><a href="/#agriturismo" class="nav__link">Agriturismo</a></li>
+            <li><a href="/blog" class={`nav__link${path.startsWith('/blog') ? ' nav__link--attivo' : ''}`} aria-current={path.startsWith('/blog') ? 'page' : undefined}>Blog</a></li>
             <li><a href="/contatti" class={`nav__link${path === '/contatti' ? ' nav__link--attivo' : ''}`} aria-current={path === '/contatti' ? 'page' : undefined}>Contatti</a></li>
           </ul>
         </div>
