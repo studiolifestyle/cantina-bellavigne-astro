@@ -1,0 +1,184 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Contatti e prenotazioni — Cantina Bellavigne"
+  description="Contatta Cantina Bellavigne per prenotazioni degustazioni, acquisto vini o informazioni sull'agriturismo. Siamo a Bardolino, sul Lago di Garda."
+>
+
+  <section class="pagina-intestazione">
+    <div class="contenitore">
+      <h1 class="pagina-intestazione__titolo">Contatti e prenotazioni</h1>
+      <p class="pagina-intestazione__sottotitolo">
+        Per prenotare una degustazione, soggiornare in agriturismo
+        o semplicemente fare una domanda.
+      </p>
+    </div>
+  </section>
+
+  <section class="sezione" aria-labelledby="titolo-contatti">
+    <div class="contenitore">
+      <h2 id="titolo-contatti" class="sr-only">Modulo di contatto e informazioni</h2>
+
+      <div class="contatti__griglia">
+
+        <div class="contatti__form-wrapper">
+          <h2 class="contatti__titolo-sezione">Scrivici</h2>
+
+          <form class="form" id="form-contatto" method="POST" action="#">
+
+            <fieldset class="form__gruppo">
+              <legend class="form__legend">I tuoi dati</legend>
+
+              <div class="form__campo">
+                <label class="form__etichetta" for="nome">
+                  Nome e cognome <span class="form__obbligatorio" aria-hidden="true">*</span>
+                </label>
+                <input
+                  class="form__input"
+                  type="text"
+                  id="nome"
+                  name="nome"
+                  required
+                  minlength="2"
+                  maxlength="100"
+                  autocomplete="name"
+                  placeholder="Mario Rossi"
+                />
+                <span class="form__errore" id="errore-nome" aria-live="polite"></span>
+              </div>
+
+              <div class="form__campo">
+                <label class="form__etichetta" for="email">
+                  Email <span class="form__obbligatorio" aria-hidden="true">*</span>
+                </label>
+                <input
+                  class="form__input"
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  autocomplete="email"
+                  placeholder="mario@esempio.it"
+                />
+                <span class="form__errore" id="errore-email" aria-live="polite"></span>
+              </div>
+
+              <div class="form__campo">
+                <label class="form__etichetta" for="telefono">
+                  Telefono <span class="form__opzionale">(opzionale)</span>
+                </label>
+                <input
+                  class="form__input"
+                  type="tel"
+                  id="telefono"
+                  name="telefono"
+                  autocomplete="tel"
+                  placeholder="+39 333 000 0000"
+                />
+              </div>
+
+            </fieldset>
+
+            <fieldset class="form__gruppo">
+              <legend class="form__legend">La tua richiesta</legend>
+
+              <div class="form__campo">
+                <label class="form__etichetta" for="tipo-richiesta">
+                  Tipo di richiesta <span class="form__obbligatorio" aria-hidden="true">*</span>
+                </label>
+                <select class="form__input form__select" id="tipo-richiesta" name="tipo-richiesta" required>
+                  <option value="">— Seleziona —</option>
+                  <option value="degustazione">Prenotazione degustazione</option>
+                  <option value="agriturismo">Soggiorno agriturismo</option>
+                  <option value="acquisto">Acquisto vini</option>
+                  <option value="altro">Altro</option>
+                </select>
+                <span class="form__errore" id="errore-tipo" aria-live="polite"></span>
+              </div>
+
+              <div class="form__campo">
+                <label class="form__etichetta" for="messaggio">
+                  Messaggio <span class="form__obbligatorio" aria-hidden="true">*</span>
+                </label>
+                <textarea
+                  class="form__input form__textarea"
+                  id="messaggio"
+                  name="messaggio"
+                  required
+                  minlength="10"
+                  maxlength="1000"
+                  rows="5"
+                  placeholder="Scrivi qui la tua richiesta..."
+                ></textarea>
+                <span class="form__errore" id="errore-messaggio" aria-live="polite"></span>
+              </div>
+
+            </fieldset>
+
+            <div class="form__privacy">
+              <label class="form__checkbox-label">
+                <input type="checkbox" name="privacy" required class="form__checkbox" />
+                <span>
+                  Ho letto e accetto la
+                  <a href="#" class="form__link">privacy policy</a>.
+                  I dati saranno usati solo per rispondere alla tua richiesta.
+                </span>
+              </label>
+            </div>
+
+            <p class="form__nota-obbligatori">
+              <span aria-hidden="true">*</span> Campi obbligatori
+            </p>
+
+            <button class="btn form__submit" type="submit">
+              Invia messaggio
+            </button>
+
+          </form>
+        </div>
+
+        <aside class="contatti__info" aria-labelledby="titolo-info">
+          <h2 id="titolo-info" class="contatti__titolo-sezione">Dove siamo</h2>
+
+          <address class="indirizzo">
+            <p class="indirizzo__nome">Cantina Bellavigne</p>
+            <p class="indirizzo__riga">Via dei Vigneti 12</p>
+            <p class="indirizzo__riga">37011 Bardolino (VR)</p>
+            <p class="indirizzo__riga">
+              <a href="tel:+390450000000" class="indirizzo__link">+39 045 000 0000</a>
+            </p>
+            <p class="indirizzo__riga">
+              <a href="mailto:info@cantinabellavigne.it" class="indirizzo__link">
+                info@cantinabellavigne.it
+              </a>
+            </p>
+          </address>
+
+          <div class="orari">
+            <h3 class="orari__titolo">Orari</h3>
+            <dl class="orari__lista">
+              <dt>Lunedì – Venerdì</dt>
+              <dd>9:00 – 18:00</dd>
+              <dt>Sabato</dt>
+              <dd>10:00 – 17:00</dd>
+              <dt>Domenica</dt>
+              <dd>Su appuntamento</dd>
+            </dl>
+          </div>
+
+          <div class="degustazioni-info">
+            <h3 class="orari__titolo">Degustazioni guidate</h3>
+            <p>Ogni sabato alle <time datetime="17:00">17:00</time>.</p>
+            <p>Durata: 90 minuti. 4 vini con abbinamenti.</p>
+            <p>Posti limitati — prenotazione obbligatoria entro il giovedì.</p>
+          </div>
+
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+</Layout>

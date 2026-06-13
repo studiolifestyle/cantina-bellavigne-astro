@@ -1,0 +1,80 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const vini = await getCollection('vini');
+---
+
+<Layout
+  title="I nostri vini — Cantina Bellavigne"
+  description="Scopri i vini di Cantina Bellavigne: Bardolino, Lugana, Amarone e Chiaretto. Biologici, prodotti nelle colline del Lago di Garda."
+>
+
+  <section class="pagina-intestazione">
+    <div class="contenitore">
+      <h1 class="pagina-intestazione__titolo">I nostri vini</h1>
+      <p class="pagina-intestazione__sottotitolo">
+        Uve coltivate a mano, vinificazione in cantina di proprietà.
+        Certificazione biologica dal 2018.
+      </p>
+    </div>
+  </section>
+
+  <section class="filtri" aria-label="Filtra per tipo di vino">
+    <div class="contenitore">
+      <div class="filtri__gruppo" role="group" aria-label="Categoria vino">
+        <button class="filtri__btn filtri__btn--attivo" data-filtro="tutti">Tutti</button>
+        <button class="filtri__btn" data-filtro="rosso">Rossi</button>
+        <button class="filtri__btn" data-filtro="bianco">Bianchi</button>
+        <button class="filtri__btn" data-filtro="rosato">Rosati</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="sezione" aria-labelledby="titolo-catalogo">
+    <div class="contenitore">
+      <h2 id="titolo-catalogo" class="sr-only">Catalogo vini</h2>
+
+      <div class="grid-vini" id="griglia-vini">
+        {vini.map(vino => (
+          <article class="card-vino" data-categoria={vino.data.categoria}>
+            <img
+              class="card-vino__immagine"
+              src={vino.data.immagine}
+              alt={vino.data.altImmagine}
+              width="400"
+              height="533"
+              loading="lazy"
+            />
+            <div class="card-vino__corpo">
+              <p class="card-vino__tipo">{vino.data.tipo}</p>
+              <h3 class="card-vino__nome">{vino.data.nome}</h3>
+              <p class="card-vino__annata">
+                Annata {vino.data.annata} · € {vino.data.prezzo.toFixed(2).replace('.', ',')}
+              </p>
+              <p class="card-vino__descrizione">{vino.body.trim()}</p>
+              <a href="#contatto-vino" class="btn btn--outline btn--piccolo">Richiedi info</a>
+            </div>
+          </article>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <section class="sezione sezione--sfondo" id="contatto-vino" aria-labelledby="titolo-degustazione">
+    <div class="contenitore">
+      <div class="sezione__intestazione">
+        <h2 id="titolo-degustazione" class="sezione__titolo">Vieni a degustare</h2>
+        <p class="sezione__sottotitolo">
+          Ogni sabato alle 17:00 guidiamo una degustazione di 4 vini in cantina.
+          Posti limitati — prenotazione obbligatoria.
+        </p>
+      </div>
+      <div class="cta-centrata">
+        <a href="/contatti" class="btn">Prenota la degustazione</a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

@@ -1,17 +1,137 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout
+  title="Cantina Bellavigne — Vini e Agriturismo sul Lago di Garda"
+  description="Tre generazioni di viticoltura nelle colline del Lago di Garda. Vini biologici, degustazioni e agriturismo a conduzione familiare."
+>
+
+  <section class="hero" aria-labelledby="titolo-hero">
+    <div class="contenitore">
+      <div class="hero__contenuto">
+        <h1 id="titolo-hero" class="hero__titolo">
+          Vini che raccontano il territorio
+        </h1>
+        <p class="hero__sottotitolo">
+          Tre generazioni di viticoltura nelle colline del Lago di Garda.
+          Biologico, sostenibile, familiare.
+        </p>
+        <a href="/vini" class="btn">Scopri i vini</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sezione" id="vini" aria-labelledby="titolo-vini">
+    <div class="contenitore">
+
+      <div class="sezione__intestazione">
+        <h2 id="titolo-vini" class="sezione__titolo">I nostri vini</h2>
+        <p class="sezione__sottotitolo">
+          Uve coltivate a mano, vinificazione in cantina di proprietà.
+          Ogni bottiglia porta il nome di un luogo preciso.
+        </p>
+      </div>
+
+      <div class="grid-vini">
+
+        <article class="card-vino">
+          <img
+            class="card-vino__immagine"
+            src="/img/bardolino.jpg"
+            alt="Bottiglia di Bardolino Classico su sfondo di vigneto"
+            width="400"
+            height="533"
+            loading="lazy"
+          />
+          <div class="card-vino__corpo">
+            <p class="card-vino__tipo">Rosso DOC</p>
+            <h3 class="card-vino__nome">Bardolino Classico</h3>
+            <p class="card-vino__annata">Annata 2023</p>
+            <p class="card-vino__descrizione">
+              Leggero e beverino, con note di ciliegia fresca e spezie delicate.
+              Perfetto con salumi del territorio e pesci di lago.
+            </p>
+          </div>
+        </article>
+
+        <article class="card-vino">
+          <img
+            class="card-vino__immagine"
+            src="/img/lugana.jpg"
+            alt="Bottiglia di Lugana DOC tra le vigne"
+            width="400"
+            height="533"
+            loading="lazy"
+          />
+          <div class="card-vino__corpo">
+            <p class="card-vino__tipo">Bianco DOC</p>
+            <h3 class="card-vino__nome">Lugana DOC</h3>
+            <p class="card-vino__annata">Annata 2023</p>
+            <p class="card-vino__descrizione">
+              Fresco e minerale, da uve Turbiana coltivate sulle rive del lago.
+              Abbinamento ideale con pesce di lago e formaggi freschi.
+            </p>
+          </div>
+        </article>
+
+        <article class="card-vino">
+          <img
+            class="card-vino__immagine"
+            src="/img/amarone.jpg"
+            alt="Bottiglia di Amarone della Valpolicella in cantina"
+            width="400"
+            height="533"
+            loading="lazy"
+          />
+          <div class="card-vino__corpo">
+            <p class="card-vino__tipo">Rosso DOCG</p>
+            <h3 class="card-vino__nome">Amarone della Valpolicella</h3>
+            <p class="card-vino__annata">Annata 2019</p>
+            <p class="card-vino__descrizione">
+              Strutturato e longevo, da appassimento tradizionale.
+              Note di frutta secca, cacao e tabacco. Da meditazione.
+            </p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="sezione sezione--sfondo" id="agriturismo" aria-labelledby="titolo-agriturismo">
+    <div class="contenitore">
+
+      <div class="agriturismo__griglia">
+
+        <img
+          class="agriturismo__immagine"
+          src="/img/agriturismo.jpg"
+          alt="La corte dell'agriturismo Bellavigne con tavoli tra i filari"
+          width="800"
+          height="600"
+          loading="lazy"
+        />
+
+        <div class="agriturismo__testo">
+          <h2 id="titolo-agriturismo" class="agriturismo__titolo">
+            L'agriturismo
+          </h2>
+          <p class="agriturismo__paragrafo">
+            Sei camere nel casale del Settecento, a cinquecento metri dal lago.
+            La colazione si fa in cantina, tra le botti. La cena usa quello che
+            cresce nell'orto e quello che nuota nel lago.
+          </p>
+          <p class="agriturismo__paragrafo">
+            Aperto da aprile a ottobre. Prenotazione minima due notti.
+            Degustazioni guidate ogni sabato alle 17:00 — su prenotazione.
+          </p>
+          <a href="/contatti" class="btn btn--outline">Prenota una visita</a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</Layout>

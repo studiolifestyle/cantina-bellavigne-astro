@@ -1,0 +1,81 @@
+---
+import '../styles/reset.css';
+import '../styles/style.css';
+
+const { title, description = "Vini biologici e agriturismo sul Lago di Garda." } = Astro.props;
+
+const path = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+  </head>
+  <body>
+
+    <header>
+      <nav class="nav" aria-label="Navigazione principale">
+        <div class="contenitore nav__interno">
+          <a href="/" class="nav__logo">Cantina Bellavigne</a>
+          <ul class="nav__lista" role="list">
+            <li><a href="/vini" class={`nav__link${path === '/vini' ? ' nav__link--attivo' : ''}`} aria-current={path === '/vini' ? 'page' : undefined}>I nostri vini</a></li>
+            <li><a href="/#agriturismo" class="nav__link">Agriturismo</a></li>
+            <li><a href="/contatti" class={`nav__link${path === '/contatti' ? ' nav__link--attivo' : ''}`} aria-current={path === '/contatti' ? 'page' : undefined}>Contatti</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="footer">
+      <div class="contenitore">
+        <div class="footer__griglia">
+
+          <div>
+            <p class="footer__titolo">Cantina Bellavigne</p>
+            <p class="footer__testo">
+              Via dei Vigneti 12<br />
+              37011 Bardolino (VR)<br />
+              +39 045 000 0000
+            </p>
+          </div>
+
+          <div>
+            <p class="footer__titolo">Esplora</p>
+            <ul class="footer__lista" role="list">
+              <li><a href="/vini" class="footer__link">I nostri vini</a></li>
+              <li><a href="/#agriturismo" class="footer__link">Agriturismo</a></li>
+              <li><a href="/contatti" class="footer__link">Contatti</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <p class="footer__titolo">Orari cantina</p>
+            <p class="footer__testo">
+              Lunedì – Venerdì: 9:00–18:00<br />
+              Sabato: 10:00–17:00<br />
+              Domenica: su appuntamento
+            </p>
+          </div>
+
+        </div>
+
+        <p class="footer__fondo">
+          © <time datetime="2026">2026</time> Cantina Bellavigne — Progetto demo
+        </p>
+
+      </div>
+    </footer>
+
+  </body>
+</html>
