@@ -52,7 +52,7 @@ const vini = await getCollection('vini');
               <p class="card-vino__annata">
                 Annata {vino.data.annata} · € {vino.data.prezzo.toFixed(2).replace('.', ',')}
               </p>
-              <p class="card-vino__descrizione">{vino.body.trim()}</p>
+              <p class="card-vino__descrizione">{vino.body?.trim()}</p>
               <a href="#contatto-vino" class="btn btn--outline btn--piccolo">Richiedi info</a>
             </div>
           </article>
@@ -78,3 +78,25 @@ const vini = await getCollection('vini');
   </section>
 
 </Layout>
+
+<script>
+  const pulsanti = document.querySelectorAll('[data-filtro]');
+  const card = document.querySelectorAll('[data-categoria]');
+
+  pulsanti.forEach(pulsante => {
+    pulsante.addEventListener('click', () => {
+      pulsanti.forEach(p => p.classList.remove('filtri__btn--attivo'));
+      pulsante.classList.add('filtri__btn--attivo');
+
+      const categoria = pulsante.dataset.filtro;
+
+      card.forEach(c => {
+        if (categoria === 'tutti' || c.dataset.categoria === categoria) {
+          c.style.display = '';
+        } else {
+          c.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>
