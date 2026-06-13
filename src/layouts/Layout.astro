@@ -4,7 +4,7 @@ import '../styles/style.css';
 
 const { title, description = "Vini biologici e agriturismo sul Lago di Garda." } = Astro.props;
 
-const path = Astro.url.pathname;
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 ---
 
 <!doctype html>
