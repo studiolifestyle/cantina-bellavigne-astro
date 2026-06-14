@@ -1,9 +1,10 @@
 ---
-titolo: Vendemmia 2024 — un'annata da ricordare
+titolo: 'Vendemmia 2024: un’annata da ricordare'
 data: 2024-10-15
-descrizione: Settembre asciutto e ottobre generoso di sole hanno regalato uve straordinarie. Raccontiamo la raccolta a mano nelle nostre vigne sul Garda.
+descrizione: >-
+  Settembre asciutto e ottobre generoso di sole hanno regalato uve
+  straordinarie. Raccontiamo la raccolta a mano nelle nostre vigne sul Garda.
 ---
-
 Ogni vendemmia ha la sua storia. Quella del 2024 la ricorderemo per il contrasto netto tra un'estate siccitosa e un settembre che ha cambiato tutto: piogge misurate al momento giusto, poi sole fino a metà ottobre.
 
 ## Le uve
