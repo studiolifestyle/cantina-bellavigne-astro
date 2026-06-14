@@ -32,6 +32,10 @@ importers:
       zod:
         specifier: ^4.4.3
         version: 4.4.3
+    devDependencies:
+      wrangler:
+        specifier: ^4.100.0
+        version: 4.100.0
 
 packages:
 
