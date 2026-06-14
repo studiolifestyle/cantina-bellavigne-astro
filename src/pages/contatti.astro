@@ -26,7 +26,11 @@ import Layout from '../layouts/Layout.astro';
         <div class="contatti__form-wrapper">
           <h2 class="contatti__titolo-sezione">Scrivici</h2>
 
-          <form class="form" id="form-contatto" method="POST" action="#">
+          <form class="form" id="form-contatto" method="POST" action="https://api.web3forms.com/submit">
+
+            <input type="hidden" name="access_key" value="b087f148-0df9-406f-8f5b-e4f00930637b" />
+            <input type="hidden" name="subject" value="Nuova richiesta — Cantina Bellavigne" />
+            <input type="checkbox" name="botcheck" class="sr-only" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
             <fieldset class="form__gruppo">
               <legend class="form__legend">I tuoi dati</legend>
@@ -132,9 +136,11 @@ import Layout from '../layouts/Layout.astro';
               <span aria-hidden="true">*</span> Campi obbligatori
             </p>
 
-            <button class="btn form__submit" type="submit">
+            <button class="btn form__submit" type="submit" id="btn-invia">
               Invia messaggio
             </button>
+
+            <div id="form-feedback" role="alert" aria-live="polite" hidden></div>
 
           </form>
         </div>
@@ -180,5 +186,71 @@ import Layout from '../layouts/Layout.astro';
       </div>
     </div>
   </section>
+
+<style>
+  #form-feedback {
+    margin-top: 1rem;
+    padding: 1rem 1.25rem;
+    border-radius: 0.5rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  #form-feedback.successo {
+    background-color: #d1fae5;
+    color: #065f46;
+    border: 1px solid #6ee7b7;
+  }
+  #form-feedback.errore {
+    background-color: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fca5a5;
+  }
+  #btn-invia:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+</style>
+
+<script>
+  const form = document.getElementById('form-contatto');
+  const feedback = document.getElementById('form-feedback');
+  const btnInvia = document.getElementById('btn-invia');
+
+  form.addEventListener('submit', async (evento) => {
+    evento.preventDefault();
+
+    btnInvia.disabled = true;
+    btnInvia.textContent = 'Invio in corso…';
+    feedback.hidden = true;
+    feedback.className = '';
+
+    const dati = new FormData(form);
+
+    try {
+      const risposta = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: dati,
+      });
+
+      const json = await risposta.json();
+
+      if (risposta.ok && json.success) {
+        feedback.textContent = 'Messaggio inviato! Ti risponderemo al più presto.';
+        feedback.classList.add('successo');
+        form.reset();
+      } else {
+        feedback.textContent = json.message || 'Si è verificato un errore. Riprova tra qualche minuto.';
+        feedback.classList.add('errore');
+      }
+    } catch {
+      feedback.textContent = 'Impossibile inviare il messaggio. Controlla la connessione e riprova.';
+      feedback.classList.add('errore');
+    } finally {
+      feedback.hidden = false;
+      btnInvia.disabled = false;
+      btnInvia.textContent = 'Invia messaggio';
+    }
+  });
+</script>
 
 </Layout>
